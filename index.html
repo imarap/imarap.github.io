@@ -1,108 +1,454 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Latitude Analysis</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="styles.css">
-  <!-- jQuery CDN -->
-  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-  
-  <!-- Bootstrap CDN -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<meta charset="UTF-8">
+	<title>D3Times</title>
+	<link rel="stylesheet" href="assets/css/style.css">
+	<!-- Latest compiled and minified CSS & JS -->
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.7.3/d3.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
+
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+	
+	<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 
 </head>
 <body>
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="index.html"><font color="#FC0505" size="10">Latitude</font></a>
-      </div>
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <div class="col-md-6"></div>
-        <ul class="nav navbar-nav">
-          <li class="dropdown">
-            <a href="index.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                <font color="#1F1E1E">Plot</font> <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <li><a href="temperature.html">Max Temperature</a></li>
-                <li><a href="humidity.html">Humidity</a></li>
-                <li><a href="cloudiness.html">Cloudiness</a></li>
-                <li><a href="windspeed.html">Wind Speed</a></li>
-            </ul>
-          </li>
-          <li><a class="navbar-brand" href="comparison.html"><font color="#1F1E1E">Comparison</font></a></li>
-          <li><a class="navbar-brand" href="data.html"><font color="#1F1E1E">Data</font></a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <div class="container showgrid">
-      <div class="row showgrid">
-          <div class="row showgrid">
-              <div class="col-md-8">
-                <table style="table-layout:fixed">
-                  <tr>
-                      <td class="tdl" style="word-wrap: break-word"><strong><h1>Summary: Latitude Vs. X</h1></strong><hr/><br/>
-                        <img class="imgvis" src="Latitud_MaxTemperature.png" alt="Latitude Vs. Max Temperature" width="500" height="400">
-                        <br/><br/>This analysis was done to find if the weather changes to warmer when we get closer to equator. 
-                        First an amount of 600 cities were generated randomly. <br/><br/>We considered the Geographic Coordinates System Latitud 
-                        values that are measured relative to the equator and range from -90° at the South Pole to +90° at the North Pole. 
-                        Longitude values are measured relative to the prime meridian. <br/><br/>They range from -180° when traveling west to 180° when 
-                        traveling east. Once the latitudes and longitudes were generated, the citi names were found using the citipy api. 
-                        Then we found the city weather using the OpenWeatherMap API -openweather.org api-. <br/><br/>
-                        In this study we considered some important factors as Temperature, Humidity, Cloudiness. <br/><br/>
-                        The analysis results the following trends:<br/><br/>
-                        <h1>Trend 1</h1>
-                        We can observe that cities located around the 0 latitud -equator line- tend to be higher the zero temperature.
-                        <br/><br/>
-                        <h1>Trend 2</h1>
-                        We can observe that most of cities tend to show humidity close to 100 no matter if located close to equator or no.
-                        <br/><br/>
-                        <h1>Trend 3</h1>
-                        We can observe two group of Cloudiness: a group of cities with almost zero and a second group of cities 
-                        between 80 and 100 % of cloudiness no matter how close are to the equator line.
-                        <br/><br/>
-                      </td>
-                  </tr>
-                </table>
-              </div>
-              <div class="col-md-4">
-                <table>
-                  <tr>
-                      <td class="tdv"><strong><h2>Visualizations</h2></strong><hr/><br/>
-                        <table>
-                          <tr>
-                            <td class="tdvis">
-                                <a href="temperature.html"><img src="Latitud_MaxTemperature.png" alt="Latitude Vs. Max Temperature" width="110" height="100"></a>
-                            </td>
-                            <td class="tdvis">
-                                <a href="humidity.html"><img src="Latitud_Humidity.png" alt="Latitude Vs. Humidity" width="110" height="100"></a>
-                            </td>
-                          </tr>
-                          <tr>         
-                            <td class="tdvis">
-                                <a href="cloudiness.html"><img src="Latitud_Cloudiness.png" alt="Latitude Vs. Cloudiness" width="110" height="100"></a>
-                            </td>
-                            <td class="tdvis">
-                                <a href="windspeed.html"><img src="Latitud_WindSpeed.png" alt="Latitude Vs. Wind Speed" width="110" height="100"></a>
-                            </td>
-                          </tr> 
-                        </table>
-                      </td>
-                  </tr>
-                </table>
-              </div>
-          </div>
-      </div>
-    </div>
+	<div class="container">
+		<div class="col-md-2"><img src="fishbowl.png" height="240" width="200"></div>
+		<div class="jumbotron text-center">
+			<h2>Data Journalism and D3</h2>
+			<h2>Healthcare Coverage vs. Poverty</h2>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-md-12 col-md-offset-0">
+				<h2>Healthcare Coverage vs. Poverty level</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12  col-md-9 col-md-offset-0">
+				<!-- <div class="embed-responsive embed-responsive-16by9"> -->
+				<div class="iframeContainer">
+					<iframe src="d3.html" class="framearea" frameborder="0" width="100%" height="100%"></iframe>
+					<!-- Students: Add a responsive iframe here that includes the d3.html file -->
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12  col-md-9 col-md-offset-0">
+				<div class="article">
+					<!-- Students: Replace with your analysis of the data -->
+					<p><h3>Analysis</h3><br/><br/>
+					The purpose of this project is to analyze the poverty status versus the healthcare status of coverage
+					by each of US state. The data was obtained from two sources: the US Census Bureau Fact Finder page a
+					Behavioral Risk Factor Surveillance System. <br/>Once the data was installed in a excel.csv format, it was 
+					accessed in d3. The data is included below.
+					</p>
+					Based on the data plotted we can conclude:<br/>
+					<ul>
+						<li>There exists a correlation between poverty status and population with poor healthcare coverage.
+							States as Missisipi that poverty of 21.5% and lacks healthcare coverage of 18.8% versus states as Massachusets
+							with a poverty level of 11.6% and lacks healthcare coverage of 4.6%. 
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+			<p><h3>Data Sample</h3>
+				<table>
+					<tr>
+						<td class="tdl" style="word-wrap: break-word">
+							The following table includes all of states used through this project.
+						<table class="table table-bordered table-hover table-condensed">
+						<thead><tr><th title="Field #1">Id</th>
+						<th title="Field #2">State</th>
+						<th title="Field #3">Abbr</th>
+						<th title="Field #4">Poverty Level</th>
+						<th title="Field #5">Healthcare Level</th>
+						</tr></thead>
+						<tbody><tr>
+						<td align="right">1</td>
+						<td>Alabama</td>
+						<td>AL</td>
+						<td align="right">19.3</td>
+						<td align="right">13.9</td>
+						</tr>
+						<tr>
+						<td align="right">2</td>
+						<td>Alaska</td>
+						<td>AK</td>
+						<td align="right">11.2</td>
+						<td align="right">15</td>
+						</tr>
+						<tr>
+						<td align="right">4</td>
+						<td>Arizona</td>
+						<td>AZ</td>
+						<td align="right">18.2</td>
+						<td align="right">14.4</td>
+						</tr>
+						<tr>
+						<td align="right">5</td>
+						<td>Arkansas</td>
+						<td>AR</td>
+						<td align="right">18.9</td>
+						<td align="right">16.3</td>
+						</tr>
+						<tr>
+						<td align="right">6</td>
+						<td>California</td>
+						<td>CA</td>
+						<td align="right">16.4</td>
+						<td align="right">14.8</td>
+						</tr>
+						<tr>
+						<td align="right">8</td>
+						<td>Colorado</td>
+						<td>CO</td>
+						<td align="right">12</td>
+						<td align="right">12.8</td>
+						</tr>
+						<tr>
+						<td align="right">9</td>
+						<td>Connecticut</td>
+						<td>CT</td>
+						<td align="right">10.8</td>
+						<td align="right">8.7</td>
+						</tr>
+						<tr>
+						<td align="right">10</td>
+						<td>Delaware</td>
+						<td>DE</td>
+						<td align="right">12.5</td>
+						<td align="right">8.7</td>
+						</tr>
+						<tr>
+						<td align="right">11</td>
+						<td>District of Columbia</td>
+						<td>DC</td>
+						<td align="right">17.7</td>
+						<td align="right">8.3</td>
+						</tr>
+						<tr>
+						<td align="right">12</td>
+						<td>Florida</td>
+						<td>FL</td>
+						<td align="right">16.5</td>
+						<td align="right">17.6</td>
+						</tr>
+						<tr>
+						<td align="right">13</td>
+						<td>Georgia</td>
+						<td>GA</td>
+						<td align="right">18.3</td>
+						<td align="right">20.9</td>
+						</tr>
+						<tr>
+						<td align="right">15</td>
+						<td>Hawaii</td>
+						<td>HI</td>
+						<td align="right">11.4</td>
+						<td align="right">8.1</td>
+						</tr>
+						<tr>
+						<td align="right">16</td>
+						<td>Idaho</td>
+						<td>ID</td>
+						<td align="right">14.8</td>
+						<td align="right">16.5</td>
+						</tr>
+						<tr>
+						<td align="right">17</td>
+						<td>Illinois</td>
+						<td>IL</td>
+						<td align="right">14.4</td>
+						<td align="right">11.9</td>
+						</tr>
+						<tr>
+						<td align="right">18</td>
+						<td>Indiana</td>
+						<td>IN</td>
+						<td align="right">15.2</td>
+						<td align="right">14.8</td>
+						</tr>
+						<tr>
+						<td align="right">19</td>
+						<td>Iowa</td>
+						<td>IA</td>
+						<td align="right">12.2</td>
+						<td align="right">7.7</td>
+						</tr>
+						<tr>
+						<td align="right">20</td>
+						<td>Kansas</td>
+						<td>KS</td>
+						<td align="right">13.6</td>
+						<td align="right">14.5</td>
+						</tr>
+						<tr>
+						<td align="right">21</td>
+						<td>Kentucky</td>
+						<td>KY</td>
+						<td align="right">19.1</td>
+						<td align="right">10</td>
+						</tr>
+						<tr>
+						<td align="right">22</td>
+						<td>Louisiana</td>
+						<td>LA</td>
+						<td align="right">19.8</td>
+						<td align="right">18.7</td>
+						</tr>
+						<tr>
+						<td align="right">23</td>
+						<td>Maine</td>
+						<td>ME</td>
+						<td align="right">14.1</td>
+						<td align="right">11</td>
+						</tr>
+						<tr>
+						<td align="right">24</td>
+						<td>Maryland</td>
+						<td>MD</td>
+						<td align="right">10.1</td>
+						<td align="right">9.2</td>
+						</tr>
+						<tr>
+						<td align="right">25</td>
+						<td>Massachusetts</td>
+						<td>MA</td>
+						<td align="right">11.6</td>
+						<td align="right">4.6</td>
+						</tr>
+						<tr>
+						<td align="right">26</td>
+						<td>Michigan</td>
+						<td>MI</td>
+						<td align="right">16.2</td>
+						<td align="right">10.3</td>
+						</tr>
+						<tr>
+						<td align="right">27</td>
+						<td>Minnesota</td>
+						<td>MN</td>
+						<td align="right">11.5</td>
+						<td align="right">7.3</td>
+						</tr>
+						<tr>
+						<td align="right">28</td>
+						<td>Mississippi</td>
+						<td>MS</td>
+						<td align="right">21.5</td>
+						<td align="right">18.8</td>
+						</tr>
+						<tr>
+						<td align="right">29</td>
+						<td>Missouri</td>
+						<td>MO</td>
+						<td align="right">15.5</td>
+						<td align="right">12.9</td>
+						</tr>
+						<tr>
+						<td align="right">30</td>
+						<td>Montana</td>
+						<td>MT</td>
+						<td align="right">15.4</td>
+						<td align="right">12.9</td>
+						</tr>
+						<tr>
+						<td align="right">31</td>
+						<td>Nebraska</td>
+						<td>NE</td>
+						<td align="right">12.4</td>
+						<td align="right">12.4</td>
+						</tr>
+						<tr>
+						<td align="right">32</td>
+						<td>Nevada</td>
+						<td>NV</td>
+						<td align="right">15.2</td>
+						<td align="right">17.1</td>
+						</tr>
+						<tr>
+						<td align="right">33</td>
+						<td>New Hampshire</td>
+						<td>NH</td>
+						<td align="right">9.2</td>
+						<td align="right">11.4</td>
+						</tr>
+						<tr>
+						<td align="right">34</td>
+						<td>New Jersey</td>
+						<td>NJ</td>
+						<td align="right">11.1</td>
+						<td align="right">12.5</td>
+						</tr>
+						<tr>
+						<td align="right">35</td>
+						<td>New Mexico</td>
+						<td>NM</td>
+						<td align="right">21.3</td>
+						<td align="right">15.4</td>
+						</tr>
+						<tr>
+						<td align="right">36</td>
+						<td>New York</td>
+						<td>NY</td>
+						<td align="right">15.9</td>
+						<td align="right">12.3</td>
+						</tr>
+						<tr>
+						<td align="right">37</td>
+						<td>North Carolina</td>
+						<td>NC</td>
+						<td align="right">17.2</td>
+						<td align="right">16.1</td>
+						</tr>
+						<tr>
+						<td align="right">38</td>
+						<td>North Dakota</td>
+						<td>ND</td>
+						<td align="right">11.5</td>
+						<td align="right">8.8</td>
+						</tr>
+						<tr>
+						<td align="right">39</td>
+						<td>Ohio</td>
+						<td>OH</td>
+						<td align="right">15.8</td>
+						<td align="right">10.2</td>
+						</tr>
+						<tr>
+						<td align="right">40</td>
+						<td>Oklahoma</td>
+						<td>OK</td>
+						<td align="right">16.6</td>
+						<td align="right">13.9</td>
+						</tr>
+						<tr>
+						<td align="right">41</td>
+						<td>Oregon</td>
+						<td>OR</td>
+						<td align="right">16.6</td>
+						<td align="right">11</td>
+						</tr>
+						<tr>
+						<td align="right">42</td>
+						<td>Pennsylvania</td>
+						<td>PA</td>
+						<td align="right">13.6</td>
+						<td align="right">10.1</td>
+						</tr>
+						<tr>
+						<td align="right">44</td>
+						<td>Rhode Island</td>
+						<td>RI</td>
+						<td align="right">14.3</td>
+						<td align="right">8</td>
+						</tr>
+						<tr>
+						<td align="right">45</td>
+						<td>South Carolina</td>
+						<td>SC</td>
+						<td align="right">18</td>
+						<td align="right">17.1</td>
+						</tr>
+						<tr>
+						<td align="right">46</td>
+						<td>South Dakota</td>
+						<td>SD</td>
+						<td align="right">14.2</td>
+						<td align="right">9.9</td>
+						</tr>
+						<tr>
+						<td align="right">47</td>
+						<td>Tennessee</td>
+						<td>TN</td>
+						<td align="right">18.3</td>
+						<td align="right">14.2</td>
+						</tr>
+						<tr>
+						<td align="right">48</td>
+						<td>Texas</td>
+						<td>TX</td>
+						<td align="right">17.2</td>
+						<td align="right">24.9</td>
+						</tr>
+						<tr>
+						<td align="right">49</td>
+						<td>Utah</td>
+						<td>UT</td>
+						<td align="right">11.7</td>
+						<td align="right">13.9</td>
+						</tr>
+						<tr>
+						<td align="right">50</td>
+						<td>Vermont</td>
+						<td>VT</td>
+						<td align="right">12.2</td>
+						<td align="right">6.7</td>
+						</tr>
+						<tr>
+						<td align="right">51</td>
+						<td>Virginia</td>
+						<td>VA</td>
+						<td align="right">11.8</td>
+						<td align="right">13.1</td>
+						</tr>
+						<tr>
+						<td align="right">53</td>
+						<td>Washington</td>
+						<td>WA</td>
+						<td align="right">13.2</td>
+						<td align="right">10.7</td>
+						</tr>
+						<tr>
+						<td align="right">54</td>
+						<td>West Virginia</td>
+						<td>WV</td>
+						<td align="right">18.3</td>
+						<td align="right">10.1</td>
+						</tr>
+						<tr>
+						<td align="right">55</td>
+						<td>Wisconsin</td>
+						<td>WI</td>
+						<td align="right">13.2</td>
+						<td align="right">8.5</td>
+						</tr>
+						</tbody></table>
+						</td>
+					</tr>
+				</table>		
+			</p>
+			</div>
+			<div class="col-md-6">
+			<h3>Data Sources</h3><br/>
+			<a href="https://factfinder.census.gov/faces/nav/jsf/pages/searchresults.xhtml">The United States Census Bureau</a><br>
+			 Demographics information using the 2014 one-year estimates from the U.S. Census Bureau's American Community Survey.<br><br>
+			<a href="https://chronicdata.cdc.gov/Behavioral-Risk-Factors/BRFSS-2014-Overall/5ra3-ixqq">Behavioral Risk Factor Surveillance System (BRFSS)</a><br/>
+			Health risks using 2014 survey data.
+			<br><br><br>
+			<a href="https://github.com/imarap/healthcare_and_poverty.git">[View Code]</a>
+			<br><br>
+			Code written using: HTML | CSS | Javascript | D3.js | Bootstrap
+			<br>
+			</div>
+		</div>
+
+	</div>
+
+	<!-- Footer-->
+	<div id="footer" class="footer">
+		<br/><br/>
+		<p><i>Copyright &copy; UC Berkeley Extension: Data Boot Camp, 2017-2018</i>  <!-- Insert your Copyright Info here --></p>
+	</div>
+
 </body>
 </html>
